@@ -1,0 +1,19 @@
+{
+  "ecmaVersion": 5,
+  "libs": [
+    "ecma5",
+    "browser",
+    "jquery"
+  ],
+  "plugins": {
+    "angular1": {
+      
+    },
+    "browser-extension": {
+      
+    },
+    "jquery-extension": {
+      
+    }
+  }
+}

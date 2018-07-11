@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<mvc:annotation-driven />
+	<context:component-scan base-package="com.lingfeng.controller"/>
+	<context:component-scan base-package="com.lingfeng.interceptor"/>
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+<!-- 		<property name="viewClass" -->
+<!-- 			value="org.springframework.web.servlet.view.JstlView" /> -->
+		<property name="prefix" value="/WEB-INF/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+
+	
+<!-- 	配置responsebody相应转json编码 -->
+    <mvc:annotation-driven>
+    	<mvc:message-converters>
+    			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+    					<constructor-arg index="0" ref="utf8Charset">
+    					</constructor-arg>
+    			</bean>
+    	</mvc:message-converters>
+    </mvc:annotation-driven>
+    <bean id ="utf8Charset" class="java.nio.charset.Charset" factory-method="forName" >
+    	<constructor-arg value="utf-8"></constructor-arg>
+    </bean>
+    
+
+
+	<!-- 拦截器 -->
+<!-- 	<bean id="ajaxInterceptor" class="com.lingfeng.interceptor.AjaxInterceptor"> -->
+<!-- 	</bean> -->
+	
+<!-- 	<mvc:interceptors> -->
+<!-- 		<mvc:interceptor> -->
+<!-- 			<mvc:mapping path="/dictionary/**" /> -->
+<!-- 			<ref bean="ajaxInterceptor" /> -->
+<!-- 		</mvc:interceptor> -->
+<!-- 	</mvc:interceptors> -->
+
+</beans>
+
+
